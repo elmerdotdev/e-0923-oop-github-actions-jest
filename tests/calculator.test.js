@@ -7,7 +7,7 @@ test('1 plus 2 equals 3', () => {
 
 test('10 minus 5 equals 5', () => {
   const calc = new Calculator()
-  expect(calc.sub(10, 5)).toBe(10)
+  expect(calc.sub(10, 5)).toBe(5)
 })
 
 test('3 multiply by 3 equals 9', () => {
