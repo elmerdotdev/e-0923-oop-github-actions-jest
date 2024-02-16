@@ -1,4 +1,4 @@
-name: Compile SASS and Jest
+name: Run Jest
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  sassAndTest:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,16 +22,3 @@ jobs:
       
       - name: Run Jest
         run: npm test
-
-      - name: Compile SASS to CSS
-        run: npm run compile-sass
-      
-      - name: Commit Compiled CSS
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -f *.css
-          git commit -m "Compile SASS to CSS" || echo "No files to commit"
-          git push origin master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
